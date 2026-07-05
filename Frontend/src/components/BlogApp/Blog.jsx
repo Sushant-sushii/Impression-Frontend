@@ -32,7 +32,7 @@ const Blog = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/blog/create`,
+        `/blog/create`,
         formData,
         {
           headers: {

@@ -8,7 +8,7 @@ const MyBlog = () => {
 
   const loadMyFeed = async (ignore = false) => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/blog/myblogs`, {
+      const response = await axios.get(`/blog/myblogs`, {
         withCredentials: true,
       })
       if (!ignore) {
@@ -45,7 +45,7 @@ const MyBlog = () => {
     if (!confirmed) return
 
     try {
-      await axios.delete(`${import.meta.env.VITE_BASE_URL}/blog/${blogId}`, {
+      await axios.delete(`/blog/${blogId}`, {
         withCredentials: true,
       })
       setBlogs((prev) => prev.filter((blog) => (blog._id || blog.id) !== blogId))

@@ -7,7 +7,7 @@ const Settings = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/logout`, {}, {
+      await axios.post(`/api/auth/logout`, {}, {
         withCredentials: true,
       })
       navigate('/')

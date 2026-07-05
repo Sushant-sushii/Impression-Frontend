@@ -9,7 +9,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/blog/getAll`)
+        const response = await axios.get(`/blog/getAll`)
         setBlogs(response.data.blogs || [])
       } catch (err) {
         console.error("Error fetching blogs:", err)

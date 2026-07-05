@@ -24,7 +24,7 @@ const Signup = () => {
       password,
       role,
     }
-    const response =await axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/register`,newUser)
+    const response =await axios.post(`/api/auth/register`,newUser)
     
 try{
     if(response.status===201){
