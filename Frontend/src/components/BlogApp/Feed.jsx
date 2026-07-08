@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const Feed = () => {
   const [blogs, setBlogs] = useState([])
@@ -9,7 +10,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(`/blog/getAll`)
+        const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/blog/getAll`)
         setBlogs(response.data.blogs || [])
       } catch (err) {
         console.error("Error fetching blogs:", err)
@@ -21,6 +22,8 @@ const Feed = () => {
 
     fetchBlogs()
   }, [])
+
+  const navigate = useNavigate()
 
   return (
     <>
@@ -46,7 +49,11 @@ const Feed = () => {
             {blogs.map((blog) => {
               const createdAt = blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : "Unknown"
               return (
-                <div key={blog.id || blog._id} className="overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/5">
+                <div
+                  key={blog.id || blog._id}
+                  onClick={() => navigate(`/display-blogs/${blog._id}`)}
+                  className="cursor-pointer overflow-hidden rounded-3xl bg-white shadow-lg shadow-black/5 transition hover:-translate-y-1 hover:shadow-xl"
+                >
                   <div className="h-28 w-full overflow-hidden bg-slate-100">
                     {blog.imageURL ? (
                       <img
