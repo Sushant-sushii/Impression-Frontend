@@ -16,7 +16,7 @@ const Signup = () => {
   const navigate = useNavigate()
   const { user, setUser } = React.useContext(UserDataContext)
 
-  const submitHandler =async (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
     const newUser = {
       username,
@@ -24,26 +24,24 @@ const Signup = () => {
       password,
       role,
     }
-    const response =await axios.post(`/api/auth/register`,newUser)
-    
-try{
-    if(response.status===201){
-      const data=response.data
 
-      setUser(data.user)
-      navigate("/home")
+    try {
+      const response = await axios.post(`/api/auth/register`, newUser)
+
+      if (response.status === 201) {
+        const data = response.data
+        setUser(data.user)
+        navigate("/home")
+      }
+    } catch (err) {
+      alert("Unable to create account. Please try again.")
+      console.error("Signup error", err)
     }
-  }
-  catch(err){
-    alert(err)
-    console.error('Signup error', err)
-  }
 
-   
     setUsername("")
     setEmail("")
     setPassword("")
-    setRole("user")
+    setRole("author")
   }
 
   return (
@@ -69,7 +67,8 @@ try{
           action=""
           className="space-y-2 flex flex-col gap-2"
           onSubmit={(e) => {
-            submitHandler(e)
+            e.preventDefault()
+            void submitHandler(e)
           }}
         >
           <div>

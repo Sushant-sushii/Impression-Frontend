@@ -41,7 +41,7 @@ catch(err){
    alert("Invalid credentials")
 }
     
-    console.log(payload);
+    
 
     setLoginCredintials("");
     setPassword("");
@@ -76,7 +76,8 @@ catch(err){
               action=""
               className="space-y-4 flex flex-col gap-2"
               onSubmit={(e) => {
-                submitHandler(e)
+                e.preventDefault()
+                void submitHandler(e)
               }}
             >
 

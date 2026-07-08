@@ -66,8 +66,9 @@ const Blog = () => {
           <div className="form mx-auto max-w-3xl bg-white rounded-2xl shadow-lg ">
             <div className="p-6 rounded-xl bg-blue-300/10">
               <form
-              onSubmit={(e)=>{
-                submitHandler(e);
+              onSubmit={(e) => {
+                e.preventDefault()
+                void submitHandler(e)
               }}
               className="space-y-6">
             <div>

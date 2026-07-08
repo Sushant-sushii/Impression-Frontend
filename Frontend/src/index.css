@@ -5,12 +5,14 @@
   src: url("/Eternalo.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
   font-family: "general";
   src: url("/general.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 html::-webkit-scrollbar{
     display: none;

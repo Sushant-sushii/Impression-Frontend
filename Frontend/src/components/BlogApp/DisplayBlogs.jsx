@@ -18,10 +18,9 @@ const DisplayBlogs = () => {
       try {
         setLoading(true)
         const [blogResponse, commentResponse] = await Promise.all([
-          axios.get(`${import.meta.env.VITE_BASE_URL}/blog/getOne/${id}`),
-          axios.get(`${import.meta.env.VITE_BASE_URL}/blog/comments/${id}`),
+          axios.get(`/blog/getOne/${id}`),
+          axios.get(`/blog/comments/${id}`),
         ])
-
         setBlog(blogResponse.data.blog)
         setComments(commentResponse.data.comments || [])
       } catch (err) {
@@ -49,7 +48,7 @@ const DisplayBlogs = () => {
     try {
       setPosting(true)
       const response = await axios.post(
-        `${import.meta.env.VITE_BASE_URL}/blog/comments`,
+        `/blog/comments`,
         { comment: commentText.trim(), blogId: id },
         { withCredentials: true }
       )
